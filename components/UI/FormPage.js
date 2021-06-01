@@ -38,7 +38,7 @@ const IssueSearch = t.struct({
   language: Language,
 });
 
-const FormPage = ({ navigation }) => {
+const FormPage = (props) => {
   const [formRef, setFormRef] = useState(null);
   const handleSubmit = () => {
     const val = formRef.getValue();
