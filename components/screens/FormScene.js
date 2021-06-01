@@ -17,6 +17,7 @@ export default class App extends React.Component {
         <NavigationContainer>
           <Stack.Navigator initialRouteName="Form">
             <Stack.Screen name="Form" component={FormPage} />
+            <Stack.Screen name="Issues" component={ListIssues} />
           </Stack.Navigator>
         </NavigationContainer>
       </View>

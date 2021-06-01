@@ -52,9 +52,9 @@ const FormPage = (props) => {
         title="Search!"
         onPress={() => {
           const val = handleSubmit();
-          // this.props.navigation.navigate("ListPage", {
-          //   paramKey: val,
-          // });
+          props.navigation.navigate("Issues", {
+            paramKey: val.labels,
+          });
         }}
       />
     </View>
