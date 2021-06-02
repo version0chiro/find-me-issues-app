@@ -53,7 +53,7 @@ const FormPage = (props) => {
         onPress={() => {
           const val = handleSubmit();
           props.navigation.navigate("Issues", {
-            paramKey: val.labels,
+            paramKey: val,
           });
         }}
       />
