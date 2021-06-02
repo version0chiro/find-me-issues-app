@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { View, Text, Button, FlatList } from "react-native";
+import { ScrollView, View,Text, Button, FlatList, StyleSheet } from "react-native";
+
+import CarouselCards from "./CarouselCards";
 
 const ListIssues = ({ route }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -26,11 +28,14 @@ const ListIssues = ({ route }) => {
       .catch((err) => {
         setIsLoading(false);
       });
-  },[]);
+  }, []);
   return (
-    <View>
-      <Text>Hello world</Text>
-      <FlatList
+    <ScrollView >
+      <View style={styles.container}>
+        <CarouselCards data={repositories} />
+      </View>
+
+      {/* <FlatList
         data={repositories}
         keyExtractor={(item) => item.id}
         extraData={isLoading}
@@ -44,10 +49,65 @@ const ListIssues = ({ route }) => {
             </View>
           );
         }}
-      />
-
-    </View>
+      /> */}
+    </ScrollView>
   );
 };
-
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  header: {
+    marginTop: 40,
+    paddingHorizontal: 30,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 30,
+  },
+  headerDate: {
+    fontSize: 14,
+    fontWeight: "700",
+    color: "orange",
+    textTransform: "uppercase",
+  },
+  headerTitle: {
+    fontSize: 33,
+    fontWeight: "bold",
+  },
+  headerImageNotification: {
+    height: 14,
+    width: 14,
+    borderRadius: 6,
+    position: "absolute",
+    backgroundColor: "red",
+    right: -4,
+    top: -4,
+    borderWidth: 2,
+    borderColor: "white",
+  },
+  blogTitle: {
+    color: "white",
+    fontSize: 24,
+    fontWeight: "bold",
+    lineHeight: 28,
+  },
+  blogProfilePic: {
+    height: 50,
+    width: 50,
+    borderRadius: 10,
+    marginRight: 15,
+  },
+  blogUsername: {
+    color: "white",
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  readTime: {
+    fontSize: 14,
+    color: "white",
+  },
+});
 export default ListIssues;
