@@ -38,7 +38,12 @@ const CarouselCards = (props) => {
         inactiveDotScale={0.6}
         tappableDots={true}
       />
-      <Button title="Go back to Home" />
+      <Button
+        title="Go back to Home"
+        onPress={() => {
+          props.navigation.navigate("Form");
+        }}
+      />
     </View>
   );
 };

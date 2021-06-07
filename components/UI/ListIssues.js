@@ -13,7 +13,7 @@ import {
 
 import CarouselCards from "./CarouselCards";
 
-const ListIssues = ({ route }) => {
+const ListIssues = ({ route, navigation }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [repositories, setRepositories] = useState([]);
 
@@ -46,7 +46,7 @@ const ListIssues = ({ route }) => {
           source={require("../../assets/background.png")}
           style={styles.background}
         >
-          <CarouselCards data={repositories} />
+          <CarouselCards data={repositories} navigation={navigation} />
         </ImageBackground>
       </View>
 
