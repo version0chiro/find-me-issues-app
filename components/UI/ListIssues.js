@@ -1,6 +1,15 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { ScrollView, View,Text, Button, FlatList, StyleSheet } from "react-native";
+import {
+  ScrollView,
+  View,
+  Text,
+  Button,
+  FlatList,
+  StyleSheet,
+  ImageBackground,
+  ActivityIndicator,
+} from "react-native";
 
 import CarouselCards from "./CarouselCards";
 
@@ -8,7 +17,7 @@ const ListIssues = ({ route }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [repositories, setRepositories] = useState([]);
 
-  const url = `https://api.github.com/search/issues?q=state:open+label:${route.params.paramKey.labels}+language:${route.params.paramKey.language}&per_page=10`;
+  const url = `https://api.github.com/search/issues?q=state:open+label:${route.params.paramKey.labels}+language:${route.params.paramKey.language}&per_page=${route.params.paramKey.numberOfItems}`;
 
   useEffect(() => {
     setIsLoading(true);
@@ -30,9 +39,15 @@ const ListIssues = ({ route }) => {
       });
   }, []);
   return (
-    <ScrollView >
+    <ScrollView>
+      <ActivityIndicator />
       <View style={styles.container}>
-        <CarouselCards data={repositories} />
+        <ImageBackground
+          source={require("../../assets/background.png")}
+          style={styles.background}
+        >
+          <CarouselCards data={repositories} />
+        </ImageBackground>
       </View>
 
       {/* <FlatList
@@ -58,6 +73,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+  },
+  background: {
+    flex: 1,
+    resizeMode: "cover",
+    justifyContent: "center",
   },
   header: {
     marginTop: 40,

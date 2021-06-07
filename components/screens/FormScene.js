@@ -1,7 +1,7 @@
 import "react-native-gesture-handler";
 
 import React, { Component } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ActivityIndicator } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
@@ -14,10 +14,19 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        <ActivityIndicator />
         <NavigationContainer>
           <Stack.Navigator initialRouteName="Form">
-            <Stack.Screen name="Form" component={FormPage} />
-            <Stack.Screen name="Issues" component={ListIssues} />
+            <Stack.Screen
+              name="Form"
+              component={FormPage}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Issues"
+              component={ListIssues}
+              options={{ headerShown: false }}
+            />
           </Stack.Navigator>
         </NavigationContainer>
       </View>

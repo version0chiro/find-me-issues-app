@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Button } from "react-native";
+import { View, StyleSheet, Button,Image } from "react-native";
 import t from "tcomb-form-native";
 
 const Form = t.form.Form;
@@ -31,9 +31,7 @@ const Language = t.enums({
 });
 
 const IssueSearch = t.struct({
-  repositry_name: t.maybe(t.String),
-  owner_name: t.maybe(t.String),
-  stars: Stars,
+  numberOfItems:t.Number,
   labels: Label,
   language: Language,
 });
@@ -47,6 +45,13 @@ const FormPage = (props) => {
   };
   return (
     <View style={styles.container}>
+      <View style={styles.imageContainer}>
+        <Image
+          style={styles.image}
+          source={require("../../assets/mainLogo.png")}
+          resizeMode={"cover"} // <- needs to be "cover" for borderRadius to take effect on Android
+        />
+      </View>
       <Form ref={(c) => setFormRef(c)} type={IssueSearch} />
       <Button
         title="Search!"
@@ -65,9 +70,21 @@ export default FormPage;
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     justifyContent: "center",
     marginTop: 50,
     padding: 50,
     backgroundColor: "#ffffff",
+  },
+  imageContainer: {
+    alignItems: 'center'
+  },
+  image: {
+    width: 150,
+    height: 150,
+    
+    borderColor: "red",
+    borderWidth: 2,
+    borderRadius: 75,
   },
 });
