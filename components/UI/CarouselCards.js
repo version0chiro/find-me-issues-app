@@ -1,16 +1,15 @@
-import React from 'react'
-import { View } from "react-native"
-import Carousel, { Pagination } from 'react-native-snap-carousel'
-import CarouselCardItem, { SLIDER_WIDTH, ITEM_WIDTH } from './CarouselCardItem'
-
+import React from "react";
+import { View, Button, ActivityIndicator } from "react-native";
+import Carousel, { Pagination } from "react-native-snap-carousel";
+import CarouselCardItem, { SLIDER_WIDTH, ITEM_WIDTH } from "./CarouselCardItem";
 
 const CarouselCards = (props) => {
-  const [index, setIndex] = React.useState(0)
-  const isCarousel = React.useRef(null)
-
+  const [index, setIndex] = React.useState(0);
+  const isCarousel = React.useRef(null);
 
   return (
     <View>
+      <ActivityIndicator />
       <Carousel
         layout="stack"
         layoutCardOffset={9}
@@ -31,19 +30,17 @@ const CarouselCards = (props) => {
           height: 10,
           borderRadius: 5,
           marginHorizontal: 0,
-          marginBottom:20,
-        //   paddingTop:10,
-          backgroundColor: 'rgba(0, 0, 0, 0.92)'
+          marginBottom: 20,
+          //   paddingTop:10,
+          backgroundColor: "white",
         }}
         inactiveDotOpacity={0.4}
         inactiveDotScale={0.6}
         tappableDots={true}
       />
+      <Button title="Go back to Home" />
     </View>
+  );
+};
 
-  )
-}
-
-
-
-export default CarouselCards
+export default CarouselCards;

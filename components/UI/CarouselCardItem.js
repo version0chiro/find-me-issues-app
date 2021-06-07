@@ -1,4 +1,5 @@
 import React from "react";
+import _ from "lodash";
 import {
   View,
   Text,
@@ -25,7 +26,7 @@ const CarouselCardItem = ({ item }) => {
       />
       <Text style={styles.header}>{item.title}</Text>
       <Text style={styles.header}>{repoName}</Text>
-      <Text style={styles.body}>{item.body}</Text>
+      <Text style={styles.body}>{_.truncate(item.body,{'length':40} )}</Text>
       <Button
         onPress={() => Linking.openURL(item.html_url)}
         title="Go to issue"
